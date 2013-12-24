@@ -30,6 +30,7 @@
 		BA6507351869FD770074D87A /* MapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6507341869FD760074D87A /* MapAnnotation.m */; };
 		BA6507391869FF4E0074D87A /* MapAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6507381869FF4E0074D87A /* MapAnnotationView.m */; };
 		BA65073D186A00570074D87A /* PlaceDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA65073C186A00570074D87A /* PlaceDetailsViewController.m */; };
+		BA65073E186A02270074D87A /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA6507301869F7370074D87A /* AddressBook.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA65073E186A02270074D87A /* AddressBook.framework in Frameworks */,
 				BA65072D1869F2240074D87A /* CoreLocation.framework in Frameworks */,
 				BA6506BD1869DD6B0074D87A /* CoreGraphics.framework in Frameworks */,
 				BA6506BF1869DD6B0074D87A /* UIKit.framework in Frameworks */,

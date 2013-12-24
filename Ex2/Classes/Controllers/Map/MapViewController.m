@@ -8,6 +8,8 @@
 
 #import "MapViewController.h"
 
+#import <AddressBook/AddressBook.h>
+
 #import "MapAnnotation.h"
 #import "MapAnnotationView.h"
 
@@ -68,6 +70,8 @@
     }
     [self.mapView addAnnotations:annotations];
     
+    UIBarButtonItem* actionsBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(didTapActionsBarButtonItem:)];
+    self.navigationItem.rightBarButtonItem = actionsBarButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -95,6 +99,10 @@
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
+    if ([annotation isKindOfClass:[MKUserLocation class]]) {
+        return nil;
+    }
+        
     MapAnnotationView *annotationView = nil;
     
     static NSString *defaultPinID = @"MapAnnotationView";
@@ -113,6 +121,15 @@
     return annotationView;
 }
 
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id < MKOverlay >)overlay
+{
+    MKPolylineRenderer *renderer =
+    [[MKPolylineRenderer alloc] initWithOverlay:overlay];
+    renderer.strokeColor = [UIColor blueColor];
+    renderer.lineWidth = 5.0;
+    return renderer;
+}
+
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
     [self performSegueWithIdentifier:@"Details" sender:view.annotation];
@@ -129,6 +146,58 @@
         PlaceDetailsViewController* placeDetailsViewController = segue.destinationViewController;
         placeDetailsViewController.place = mapAnnotation.place;
     }
+}
+
+-(void)showRoute:(MKDirectionsResponse *)response
+{
+    for (MKRoute *route in response.routes)
+    {
+        [self.mapView
+         addOverlay:route.polyline level:MKOverlayLevelAboveRoads];
+        for (MKRouteStep *step in route.steps)
+        {
+            NSLog(@"%@", step.instructions);
+        }
+    }
+}
+
+- (void)didTapActionsBarButtonItem:(id)sender
+{
+    CLGeocoder* geocoder = [[CLGeocoder alloc] init];
+    // Claves en AddressBook/ABPerson.h
+    NSDictionary* addressDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                       @"Ourense", kABPersonAddressCityKey,
+                                       @"Spain", kABPersonAddressCountryKey,
+                                       @"es", kABPersonAddressCountryCodeKey,
+                                       @"Celso Emilio Ferreiro 40", kABPersonAddressStreetKey,
+                                       @"32004", kABPersonAddressZIPKey,
+                                       nil];
+    
+    [geocoder geocodeAddressDictionary:addressDictionary completionHandler:^(NSArray *placemarks, NSError *error) {
+        CLPlacemark* firstResult = placemarks.firstObject;
+        
+        MKDirectionsRequest *request = [[MKDirectionsRequest alloc] init];
+        
+        request.source = [MKMapItem mapItemForCurrentLocation];
+        
+        MKPlacemark* firstResultPlacemark = [[MKPlacemark alloc] initWithPlacemark:firstResult];
+        
+        request.destination = [[MKMapItem alloc] initWithPlacemark:firstResultPlacemark];
+        request.requestsAlternateRoutes = YES;
+        MKDirections *directions =
+        [[MKDirections alloc] initWithRequest:request];
+        
+        [directions calculateDirectionsWithCompletionHandler:
+         ^(MKDirectionsResponse *response, NSError *error) {
+             if (error) {
+                 // Handle Error
+             } else {
+                 [self showRoute:response];
+             }
+         }];
+        
+        
+    }];
 }
 
 @end
