@@ -24,6 +24,7 @@
 		BA6507111869DDFC0074D87A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA6507051869DDFC0074D87A /* Main.storyboard */; };
 		BA6507121869DDFC0074D87A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BA6507081869DDFC0074D87A /* InfoPlist.strings */; };
 		BA6507161869E79D0074D87A /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6507151869E79D0074D87A /* DetailsViewController.m */; };
+		BA65071F1869E9810074D87A /* ElementCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA65071E1869E9810074D87A /* ElementCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,8 @@
 		BA6507091869DDFC0074D87A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BA6507141869E79D0074D87A /* DetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
 		BA6507151869E79D0074D87A /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
+		BA65071D1869E9810074D87A /* ElementCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElementCell.h; sourceTree = "<group>"; };
+		BA65071E1869E9810074D87A /* ElementCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ElementCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +149,8 @@
 		BA6506F21869DDFC0074D87A /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				BA6507171869E96A0074D87A /* Util */,
+				BA6507191869E96A0074D87A /* Views */,
 				BA6506F31869DDFC0074D87A /* AppDelegate */,
 				BA6506F61869DDFC0074D87A /* Controllers */,
 			);
@@ -251,6 +256,22 @@
 			path = Details;
 			sourceTree = "<group>";
 		};
+		BA6507171869E96A0074D87A /* Util */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		BA6507191869E96A0074D87A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BA65071D1869E9810074D87A /* ElementCell.h */,
+				BA65071E1869E9810074D87A /* ElementCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -351,6 +372,7 @@
 			files = (
 				BA65070D1869DDFC0074D87A /* SecondViewController.m in Sources */,
 				BA6507161869E79D0074D87A /* DetailsViewController.m in Sources */,
+				BA65071F1869E9810074D87A /* ElementCell.m in Sources */,
 				BA65070B1869DDFC0074D87A /* AppDelegate.m in Sources */,
 				BA65070F1869DDFC0074D87A /* main.m in Sources */,
 				BA65070C1869DDFC0074D87A /* FirstViewController.m in Sources */,

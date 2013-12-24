@@ -10,6 +10,8 @@
 
 #import "DetailsViewController.h"
 
+#import "ElementCell.h"
+
 @interface FirstViewController ()
 
 @end
@@ -68,12 +70,13 @@
     static NSString *CellIdentifier;
     
     CellIdentifier = @"ElementCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    ElementCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     NSDictionary* element = [_elements objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = [element objectForKey:@"name"];
-    cell.detailTextLabel.text = [element objectForKey:@"job"];
+    cell.titleLabel.text = [element objectForKey:@"name"];
+    cell.subtitleLabel.text = [element objectForKey:@"job"];
+    cell.userImageView.image = [UIImage imageNamed:@"User"];
     
     return cell;
     
@@ -129,7 +132,7 @@
 {
     if ([segue.identifier isEqualToString:@"Details"])
     {
-        UITableViewCell* cell = (UITableViewCell*)sender;
+        ElementCell* cell = (ElementCell*)sender;
         NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
         
         DetailsViewController* detailsViewController = segue.destinationViewController;
