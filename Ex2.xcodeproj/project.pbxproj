@@ -26,6 +26,8 @@
 		BA6507161869E79D0074D87A /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6507151869E79D0074D87A /* DetailsViewController.m */; };
 		BA6507231869EF150074D87A /* ElementCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6507221869EF150074D87A /* ElementCell.m */; };
 		BA6507271869EF2D0074D87A /* ElementCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6507261869EF2D0074D87A /* ElementCollectionCell.m */; };
+		BA65072B1869F1C90074D87A /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA65072A1869F1C90074D87A /* MapViewController.m */; };
+		BA65072D1869F2240074D87A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA65072C1869F2240074D87A /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,9 @@
 		BA6507221869EF150074D87A /* ElementCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ElementCell.m; sourceTree = "<group>"; };
 		BA6507251869EF2D0074D87A /* ElementCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElementCollectionCell.h; sourceTree = "<group>"; };
 		BA6507261869EF2D0074D87A /* ElementCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ElementCollectionCell.m; sourceTree = "<group>"; };
+		BA6507291869F1C90074D87A /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		BA65072A1869F1C90074D87A /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		BA65072C1869F2240074D87A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA65072D1869F2240074D87A /* CoreLocation.framework in Frameworks */,
 				BA6506BD1869DD6B0074D87A /* CoreGraphics.framework in Frameworks */,
 				BA6506BF1869DD6B0074D87A /* UIKit.framework in Frameworks */,
 				BA6506BB1869DD6B0074D87A /* Foundation.framework in Frameworks */,
@@ -114,6 +120,7 @@
 		BA6506B91869DD6B0074D87A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BA65072C1869F2240074D87A /* CoreLocation.framework */,
 				BA6506BA1869DD6B0074D87A /* Foundation.framework */,
 				BA6506BC1869DD6B0074D87A /* CoreGraphics.framework */,
 				BA6506BE1869DD6B0074D87A /* UIKit.framework */,
@@ -172,6 +179,7 @@
 		BA6506F61869DDFC0074D87A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BA6507281869F1BB0074D87A /* Map */,
 				BA6507131869E7910074D87A /* Details */,
 				BA6506F71869DDFC0074D87A /* FirstViewController */,
 				BA6506FA1869DDFC0074D87A /* SecondViewController */,
@@ -293,6 +301,15 @@
 			path = ElementCollectionCell;
 			sourceTree = "<group>";
 		};
+		BA6507281869F1BB0074D87A /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				BA6507291869F1C90074D87A /* MapViewController.h */,
+				BA65072A1869F1C90074D87A /* MapViewController.m */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -394,6 +411,7 @@
 				BA65070D1869DDFC0074D87A /* SecondViewController.m in Sources */,
 				BA6507271869EF2D0074D87A /* ElementCollectionCell.m in Sources */,
 				BA6507161869E79D0074D87A /* DetailsViewController.m in Sources */,
+				BA65072B1869F1C90074D87A /* MapViewController.m in Sources */,
 				BA6507231869EF150074D87A /* ElementCell.m in Sources */,
 				BA65070B1869DDFC0074D87A /* AppDelegate.m in Sources */,
 				BA65070F1869DDFC0074D87A /* main.m in Sources */,
