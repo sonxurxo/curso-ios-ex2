@@ -9,6 +9,7 @@
 #import "MapViewController.h"
 
 #import "MapAnnotation.h"
+#import "MapAnnotationView.h"
 
 @interface MapViewController ()
 
@@ -92,13 +93,13 @@
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
-    MKPinAnnotationView *annotationView = nil;
+    MapAnnotationView *annotationView = nil;
     
-    static NSString *defaultPinID = @"MKPinAnnotationView";
-    annotationView = (MKPinAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
+    static NSString *defaultPinID = @"MapAnnotationView";
+    annotationView = (MapAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
     if (annotationView == nil)
     {
-        annotationView = [[MKPinAnnotationView alloc]
+        annotationView = [[MapAnnotationView alloc]
                                  initWithAnnotation:annotation reuseIdentifier:defaultPinID];
     }
     
