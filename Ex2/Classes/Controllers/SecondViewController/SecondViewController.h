@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SecondViewController : UIViewController
+@interface SecondViewController : UIViewController<UICollectionViewDataSource>
 
+@property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 @end
