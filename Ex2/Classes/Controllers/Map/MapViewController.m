@@ -11,6 +11,8 @@
 #import "MapAnnotation.h"
 #import "MapAnnotationView.h"
 
+#import "PlaceDetailsViewController.h"
+
 @interface MapViewController ()
 
 @end
@@ -111,6 +113,22 @@
     return annotationView;
 }
 
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
+    [self performSegueWithIdentifier:@"Details" sender:view.annotation];
+}
+
 #pragma mark - 
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"Details"])
+    {
+        MapAnnotation *mapAnnotation = (MapAnnotation*)sender;
+        
+        PlaceDetailsViewController* placeDetailsViewController = segue.destinationViewController;
+        placeDetailsViewController.place = mapAnnotation.place;
+    }
+}
 
 @end

@@ -29,6 +29,7 @@
 		BA65072D1869F2240074D87A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA65072C1869F2240074D87A /* CoreLocation.framework */; };
 		BA6507351869FD770074D87A /* MapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6507341869FD760074D87A /* MapAnnotation.m */; };
 		BA6507391869FF4E0074D87A /* MapAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6507381869FF4E0074D87A /* MapAnnotationView.m */; };
+		BA65073D186A00570074D87A /* PlaceDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA65073C186A00570074D87A /* PlaceDetailsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,8 @@
 		BA6507341869FD760074D87A /* MapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapAnnotation.m; sourceTree = "<group>"; };
 		BA6507371869FF4E0074D87A /* MapAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapAnnotationView.h; sourceTree = "<group>"; };
 		BA6507381869FF4E0074D87A /* MapAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapAnnotationView.m; sourceTree = "<group>"; };
+		BA65073B186A00570074D87A /* PlaceDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceDetailsViewController.h; sourceTree = "<group>"; };
+		BA65073C186A00570074D87A /* PlaceDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceDetailsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +191,7 @@
 		BA6506F61869DDFC0074D87A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BA65073A186A004B0074D87A /* PlaceDetails */,
 				BA6507281869F1BB0074D87A /* Map */,
 				BA6507131869E7910074D87A /* Details */,
 				BA6506F71869DDFC0074D87A /* FirstViewController */,
@@ -339,6 +343,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		BA65073A186A004B0074D87A /* PlaceDetails */ = {
+			isa = PBXGroup;
+			children = (
+				BA65073B186A00570074D87A /* PlaceDetailsViewController.h */,
+				BA65073C186A00570074D87A /* PlaceDetailsViewController.m */,
+			);
+			path = PlaceDetails;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -445,6 +458,7 @@
 				BA6507231869EF150074D87A /* ElementCell.m in Sources */,
 				BA65070B1869DDFC0074D87A /* AppDelegate.m in Sources */,
 				BA65070F1869DDFC0074D87A /* main.m in Sources */,
+				BA65073D186A00570074D87A /* PlaceDetailsViewController.m in Sources */,
 				BA65070C1869DDFC0074D87A /* FirstViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
