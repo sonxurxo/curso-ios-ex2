@@ -10,4 +10,6 @@
 
 @interface FirstViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+
 @end
