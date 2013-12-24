@@ -37,17 +37,22 @@
     
     self.mapView.showsUserLocation = YES;
     
-    CLLocation* lastLocation = _locationManager.location;
+//    CLLocation* lastLocation = _locationManager.location;
+//    
+//    if (_locationManager.location)
+//    {
+//        lastLocation = _locationManager.location;
+//    }
+//    else
+//    {
+//        lastLocation = [[CLLocation alloc] initWithLatitude:42.339709 longitude:-8.670275];
+//    }
+//    [self.mapView setRegion:MKCoordinateRegionMakeWithDistance(lastLocation.coordinate, 10000, 10000) animated:NO];
     
-    if (_locationManager.location)
-    {
-        lastLocation = _locationManager.location;
-    }
-    else
-    {
-        lastLocation = [[CLLocation alloc] initWithLatitude:42.339709 longitude:-8.670275];
-    }
-    [self.mapView setRegion:MKCoordinateRegionMakeWithDistance(lastLocation.coordinate, 10000, 10000) animated:NO];
+    CLLocationCoordinate2D coordsGarage = CLLocationCoordinate2DMake(42.339709, -8.670275);
+    CLLocationCoordinate2D blimpCoord = CLLocationCoordinate2DMake(42.309709, -8.700275);
+    MKMapCamera *camera = [MKMapCamera cameraLookingAtCenterCoordinate:coordsGarage fromEyeCoordinate:blimpCoord eyeAltitude:100];
+    self.mapView.camera = camera;
     
 }
 
