@@ -8,6 +8,8 @@
 
 #import "MapViewController.h"
 
+#import <AddressBook/AddressBook.h>
+
 @interface MapViewController ()
 
 @end
@@ -32,7 +34,7 @@
     
     _locationManager = [[CLLocationManager alloc] init];
     _locationManager.delegate = self;
-//    _locationManager.distanceFilter = 1000;
+    _locationManager.distanceFilter = 1;
     [_locationManager startUpdatingLocation];
 }
 
@@ -58,4 +60,38 @@
 
 #pragma mark -
 
+- (IBAction)didTapReverseGeocodeButton:(id)sender {
+    if (_locationManager.location)
+    {
+        CLGeocoder* geocoder = [[CLGeocoder alloc] init];
+        [geocoder reverseGeocodeLocation:_locationManager.location completionHandler:^(NSArray *placemarks, NSError *error) {
+            CLPlacemark* firstResult = placemarks.firstObject;
+            NSLog(@"Country: %@", firstResult.country);
+            NSLog(@"Administrative area: %@", firstResult.administrativeArea);
+            NSLog(@"Subadministrative area: %@", firstResult.subAdministrativeArea);
+            NSLog(@"Locality: %@", firstResult.locality);
+            NSLog(@"Sublocality: %@", firstResult.subLocality);
+            NSLog(@"Postal code: %@", firstResult.postalCode);
+            NSLog(@"Thoroughfata: %@", firstResult.thoroughfare);
+            NSLog(@"Subthoroughfata: %@", firstResult.subThoroughfare);
+        }];
+    }
+}
+
+- (IBAction)didTapGeocodeButton:(id)sender {
+    CLGeocoder* geocoder = [[CLGeocoder alloc] init];
+    // Claves en AddressBook/ABPerson.h
+    NSDictionary* addressDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                       @"Ourense", kABPersonAddressCityKey,
+                                       @"Spain", kABPersonAddressCountryKey,
+                                       @"es", kABPersonAddressCountryCodeKey,
+                                       @"Celso Emilio Ferreiro 40", kABPersonAddressStreetKey,
+                                       @"32004", kABPersonAddressZIPKey,
+                                       nil];
+    
+    [geocoder geocodeAddressDictionary:addressDictionary completionHandler:^(NSArray *placemarks, NSError *error) {
+        CLPlacemark* firstResult = placemarks.firstObject;
+        NSLog(@"Location: %f, %f", firstResult.location.coordinate.latitude, firstResult.location.coordinate.longitude);
+    }];
+}
 @end

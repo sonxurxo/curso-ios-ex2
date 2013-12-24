@@ -13,4 +13,7 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *positionLabel;
 
+- (IBAction)didTapReverseGeocodeButton:(id)sender;
+
+- (IBAction)didTapGeocodeButton:(id)sender;
 @end
