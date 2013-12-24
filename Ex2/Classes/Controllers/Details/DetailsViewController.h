@@ -8,12 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DetailsViewController : UIViewController
+@interface DetailsViewController : UIViewController<UIAlertViewDelegate, UIActionSheetDelegate>
 
 @property (strong, nonatomic) NSDictionary* element;
 
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 
 @property (strong, nonatomic) IBOutlet UILabel *jobLabel;
+
+- (IBAction)didTapAlertNameButton:(id)sender;
+
+- (IBAction)didTapActionSheetButton:(id)sender;
 
 @end
