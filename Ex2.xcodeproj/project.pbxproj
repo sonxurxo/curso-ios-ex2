@@ -27,6 +27,7 @@
 		BA6507271869EF2D0074D87A /* ElementCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6507261869EF2D0074D87A /* ElementCollectionCell.m */; };
 		BA65072B1869F1C90074D87A /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA65072A1869F1C90074D87A /* MapViewController.m */; };
 		BA65072D1869F2240074D87A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA65072C1869F2240074D87A /* CoreLocation.framework */; };
+		BA6507351869FD770074D87A /* MapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6507341869FD760074D87A /* MapAnnotation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,8 @@
 		BA65072C1869F2240074D87A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		BA65072E1869F6FA0074D87A /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		BA6507301869F7370074D87A /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		BA6507331869FD760074D87A /* MapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapAnnotation.h; sourceTree = "<group>"; };
+		BA6507341869FD760074D87A /* MapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapAnnotation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -280,6 +283,7 @@
 		BA6507191869E96A0074D87A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BA6507321869FD540074D87A /* MapAnnotation */,
 				BA6507241869EF200074D87A /* ElementCollectionCell */,
 				BA6507201869EF150074D87A /* ElementCell */,
 			);
@@ -311,6 +315,15 @@
 				BA65072A1869F1C90074D87A /* MapViewController.m */,
 			);
 			path = Map;
+			sourceTree = "<group>";
+		};
+		BA6507321869FD540074D87A /* MapAnnotation */ = {
+			isa = PBXGroup;
+			children = (
+				BA6507331869FD760074D87A /* MapAnnotation.h */,
+				BA6507341869FD760074D87A /* MapAnnotation.m */,
+			);
+			path = MapAnnotation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -412,6 +425,7 @@
 			files = (
 				BA65070D1869DDFC0074D87A /* SecondViewController.m in Sources */,
 				BA6507271869EF2D0074D87A /* ElementCollectionCell.m in Sources */,
+				BA6507351869FD770074D87A /* MapAnnotation.m in Sources */,
 				BA6507161869E79D0074D87A /* DetailsViewController.m in Sources */,
 				BA65072B1869F1C90074D87A /* MapViewController.m in Sources */,
 				BA6507231869EF150074D87A /* ElementCell.m in Sources */,

@@ -8,6 +8,8 @@
 
 #import "MapViewController.h"
 
+#import "MapAnnotation.h"
+
 @interface MapViewController ()
 
 @end
@@ -15,6 +17,8 @@
 @implementation MapViewController
 {
     CLLocationManager* _locationManager;
+    
+    NSArray* _places;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -37,22 +41,29 @@
     
     self.mapView.showsUserLocation = YES;
     
-//    CLLocation* lastLocation = _locationManager.location;
-//    
-//    if (_locationManager.location)
-//    {
-//        lastLocation = _locationManager.location;
-//    }
-//    else
-//    {
-//        lastLocation = [[CLLocation alloc] initWithLatitude:42.339709 longitude:-8.670275];
-//    }
-//    [self.mapView setRegion:MKCoordinateRegionMakeWithDistance(lastLocation.coordinate, 10000, 10000) animated:NO];
+    CLLocation* lastLocation = _locationManager.location;
     
-    CLLocationCoordinate2D coordsGarage = CLLocationCoordinate2DMake(42.339709, -8.670275);
-    CLLocationCoordinate2D blimpCoord = CLLocationCoordinate2DMake(42.309709, -8.700275);
-    MKMapCamera *camera = [MKMapCamera cameraLookingAtCenterCoordinate:coordsGarage fromEyeCoordinate:blimpCoord eyeAltitude:100];
-    self.mapView.camera = camera;
+    if (_locationManager.location)
+    {
+        lastLocation = _locationManager.location;
+    }
+    else
+    {
+        lastLocation = [[CLLocation alloc] initWithLatitude:43.339709 longitude:-7.0];
+    }
+    [self.mapView setRegion:MKCoordinateRegionMakeWithDistance(lastLocation.coordinate, 100000, 100000) animated:NO];
+    
+    _places = @[
+                   @{@"location" : [[CLLocation alloc] initWithLatitude:43.5 longitude:-7], @"name" : @"Bar Pepe", @"type" : @"Bar"},
+                   @{@"location" : [[CLLocation alloc] initWithLatitude:43.2 longitude:-6.8], @"name" : @"Casa Manolo", @"type" : @"Restaurante"}
+                   ];
+    
+    NSMutableArray* annotations = [@[] mutableCopy];
+    for (NSDictionary* place in _places)
+    {
+        [annotations addObject:[[MapAnnotation alloc] initWithPlace:place]];
+    }
+    [self.mapView addAnnotations:annotations];
     
 }
 
@@ -76,5 +87,29 @@
 }
 
 #pragma mark -
+
+#pragma mark - MKMapView
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
+    MKPinAnnotationView *annotationView = nil;
+    
+    static NSString *defaultPinID = @"MKPinAnnotationView";
+    annotationView = (MKPinAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
+    if (annotationView == nil)
+    {
+        annotationView = [[MKPinAnnotationView alloc]
+                                 initWithAnnotation:annotation reuseIdentifier:defaultPinID];
+    }
+    
+    annotationView.canShowCallout = YES;
+    annotationView.draggable = NO;
+    annotationView.enabled = YES;
+    annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeInfoLight];
+    
+    return annotationView;
+}
+
+#pragma mark - 
 
 @end
