@@ -26,18 +26,27 @@
     [super viewDidLoad];
     
     _elements = @[
-                  @{@"name" : @"Xurxo", @"job" : @"CEO"},
-                  @{@"name" : @"Pilar", @"job" : @"CEO"},
-                  @{@"name" : @"Manuel", @"job" : @"Developer"},
-                  @{@"name" : @"Jorge", @"job" : @"Developer"},
-                  @{@"name" : @"Miguel", @"job" : @"Developer"},
-                  @{@"name" : @"Ana", @"job" : @"Developer"},
-                  @{@"name" : @"María", @"job" : @"Developer"},
-                  @{@"name" : @"Jose", @"job" : @"Designer"},
-                  @{@"name" : @"Pepe", @"job" : @"Designer"},
-                  @{@"name" : @"Javier", @"job" : @"Designer"},
-                  @{@"name" : @"Noelia", @"job" : @"Marketing"},
-                  @{@"name" : @"Marta", @"job" : @"Marketing"}];
+                  @[
+                      @{@"name" : @"Xurxo", @"job" : @"CEO"},
+                      @{@"name" : @"Pilar", @"job" : @"CEO"}
+                      ],
+                  @[
+                      @{@"name" : @"Manuel", @"job" : @"Developer"},
+                      @{@"name" : @"Jorge", @"job" : @"Developer"},
+                      @{@"name" : @"Miguel", @"job" : @"Developer"},
+                      @{@"name" : @"Ana", @"job" : @"Developer"},
+                      @{@"name" : @"María", @"job" : @"Developer"}
+                      ],
+                  @[
+                      @{@"name" : @"Jose", @"job" : @"Designer"},
+                      @{@"name" : @"Pepe", @"job" : @"Designer"},
+                      @{@"name" : @"Javier", @"job" : @"Designer"}
+                      ],
+                  @[
+                      @{@"name" : @"Noelia", @"job" : @"Marketing"},
+                      @{@"name" : @"Marta", @"job" : @"Marketing"}
+                      ]
+                  ];
     
     [self.tableView reloadData];
 }
@@ -52,12 +61,29 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return _elements.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _elements.count;
+    return [[_elements objectAtIndex:section] count];
+}
+
+- (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    switch (section) {
+        case 0:
+            return @"CEOs";
+        case 1:
+            return @"Developers";
+        case 2:
+            return @"Designers";
+        case 3:
+            return @"Marketing";
+            
+        default:
+            return nil;
+    }
 }
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -72,7 +98,9 @@
     CellIdentifier = @"ElementCell";
     ElementCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    NSDictionary* element = [_elements objectAtIndex:indexPath.row];
+    NSArray* section = [_elements objectAtIndex:indexPath.section];
+    
+    NSDictionary* element = [section objectAtIndex:indexPath.row];
     
     cell.titleLabel.text = [element objectForKey:@"name"];
     cell.subtitleLabel.text = [element objectForKey:@"job"];
@@ -135,8 +163,12 @@
         ElementCell* cell = (ElementCell*)sender;
         NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
         
+        NSArray* section = [_elements objectAtIndex:indexPath.section];
+        
+        NSDictionary* element = [section objectAtIndex:indexPath.row];
+        
         DetailsViewController* detailsViewController = segue.destinationViewController;
-        detailsViewController.element = [_elements objectAtIndex:indexPath.row];
+        detailsViewController.element = element;
     }
 }
 
