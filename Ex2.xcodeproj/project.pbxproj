@@ -18,7 +18,6 @@
 		BA65070B1869DDFC0074D87A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6506F51869DDFC0074D87A /* AppDelegate.m */; };
 		BA65070C1869DDFC0074D87A /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6506F91869DDFC0074D87A /* FirstViewController.m */; };
 		BA65070D1869DDFC0074D87A /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6506FC1869DDFC0074D87A /* SecondViewController.m */; };
-		BA65070E1869DDFC0074D87A /* Ex2-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA6506FF1869DDFC0074D87A /* Ex2-Info.plist */; };
 		BA65070F1869DDFC0074D87A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6507011869DDFC0074D87A /* main.m */; };
 		BA6507101869DDFC0074D87A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA6507031869DDFC0074D87A /* Images.xcassets */; };
 		BA6507111869DDFC0074D87A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA6507051869DDFC0074D87A /* Main.storyboard */; };
@@ -28,7 +27,6 @@
 		BA6507271869EF2D0074D87A /* ElementCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6507261869EF2D0074D87A /* ElementCollectionCell.m */; };
 		BA65072B1869F1C90074D87A /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA65072A1869F1C90074D87A /* MapViewController.m */; };
 		BA65072D1869F2240074D87A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA65072C1869F2240074D87A /* CoreLocation.framework */; };
-		BA6507311869F7370074D87A /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA6507301869F7370074D87A /* AddressBook.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,7 +79,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA6507311869F7370074D87A /* AddressBook.framework in Frameworks */,
 				BA65072D1869F2240074D87A /* CoreLocation.framework in Frameworks */,
 				BA6506BD1869DD6B0074D87A /* CoreGraphics.framework in Frameworks */,
 				BA6506BF1869DD6B0074D87A /* UIKit.framework in Frameworks */,
@@ -394,7 +391,6 @@
 			files = (
 				BA6507111869DDFC0074D87A /* Main.storyboard in Resources */,
 				BA6507121869DDFC0074D87A /* InfoPlist.strings in Resources */,
-				BA65070E1869DDFC0074D87A /* Ex2-Info.plist in Resources */,
 				BA6507101869DDFC0074D87A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

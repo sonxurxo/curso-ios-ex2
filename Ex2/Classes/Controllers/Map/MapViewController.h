@@ -9,11 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 
+#import <MapKit/MapKit.h>
+
 @interface MapViewController : UIViewController<CLLocationManagerDelegate>
 
-@property (strong, nonatomic) IBOutlet UILabel *positionLabel;
+@property (strong, nonatomic) IBOutlet MKMapView *mapView;
 
-- (IBAction)didTapReverseGeocodeButton:(id)sender;
-
-- (IBAction)didTapGeocodeButton:(id)sender;
 @end

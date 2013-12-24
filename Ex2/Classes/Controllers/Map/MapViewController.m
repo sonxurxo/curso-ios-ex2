@@ -8,8 +8,6 @@
 
 #import "MapViewController.h"
 
-#import <AddressBook/AddressBook.h>
-
 @interface MapViewController ()
 
 @end
@@ -36,6 +34,21 @@
     _locationManager.delegate = self;
     _locationManager.distanceFilter = 1;
     [_locationManager startUpdatingLocation];
+    
+    self.mapView.showsUserLocation = YES;
+    
+    CLLocation* lastLocation = _locationManager.location;
+    
+    if (_locationManager.location)
+    {
+        lastLocation = _locationManager.location;
+    }
+    else
+    {
+        lastLocation = [[CLLocation alloc] initWithLatitude:42.339709 longitude:-8.670275];
+    }
+    [self.mapView setRegion:MKCoordinateRegionMakeWithDistance(lastLocation.coordinate, 10000, 10000) animated:NO];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -54,44 +67,9 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
     NSLog(@"Location Manager updated location");
-    CLLocation* location = [locations firstObject];
-    self.positionLabel.text = [NSString stringWithFormat:@"My position is %f, %f", location.coordinate.latitude, location.coordinate.longitude];
+//    CLLocation* location = [locations firstObject];
 }
 
 #pragma mark -
 
-- (IBAction)didTapReverseGeocodeButton:(id)sender {
-    if (_locationManager.location)
-    {
-        CLGeocoder* geocoder = [[CLGeocoder alloc] init];
-        [geocoder reverseGeocodeLocation:_locationManager.location completionHandler:^(NSArray *placemarks, NSError *error) {
-            CLPlacemark* firstResult = placemarks.firstObject;
-            NSLog(@"Country: %@", firstResult.country);
-            NSLog(@"Administrative area: %@", firstResult.administrativeArea);
-            NSLog(@"Subadministrative area: %@", firstResult.subAdministrativeArea);
-            NSLog(@"Locality: %@", firstResult.locality);
-            NSLog(@"Sublocality: %@", firstResult.subLocality);
-            NSLog(@"Postal code: %@", firstResult.postalCode);
-            NSLog(@"Thoroughfata: %@", firstResult.thoroughfare);
-            NSLog(@"Subthoroughfata: %@", firstResult.subThoroughfare);
-        }];
-    }
-}
-
-- (IBAction)didTapGeocodeButton:(id)sender {
-    CLGeocoder* geocoder = [[CLGeocoder alloc] init];
-    // Claves en AddressBook/ABPerson.h
-    NSDictionary* addressDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                                       @"Ourense", kABPersonAddressCityKey,
-                                       @"Spain", kABPersonAddressCountryKey,
-                                       @"es", kABPersonAddressCountryCodeKey,
-                                       @"Celso Emilio Ferreiro 40", kABPersonAddressStreetKey,
-                                       @"32004", kABPersonAddressZIPKey,
-                                       nil];
-    
-    [geocoder geocodeAddressDictionary:addressDictionary completionHandler:^(NSArray *placemarks, NSError *error) {
-        CLPlacemark* firstResult = placemarks.firstObject;
-        NSLog(@"Location: %f, %f", firstResult.location.coordinate.latitude, firstResult.location.coordinate.longitude);
-    }];
-}
 @end
